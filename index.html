@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>@Maya_Indah_live | Online Now</title>
+    <meta name="description" content="Bergabunglah dengan live stream pribadi saya sekarang!">
+    
+    <!-- Preload fonts and critical styles for instant loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Mobile container emulation for desktop view */
+        .container {
+            width: 100%;
+            max-width: 480px;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #111827 0%, #080c14 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 280px;
+            background-image: linear-gradient(180deg, rgba(11, 15, 25, 0.2) 0%, #0b0f19 100%), 
+                              url('image.png');
+            background-size: cover;
+            background-position: center 20%;
+            filter: blur(8px);
+            opacity: 0.45;
+            transform: scale(1.1);
+        }
+
+        .profile-section {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 35px;
+            width: 100%;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* Avatar Container with glowing badge */
+        .avatar-wrapper {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin-bottom: 14px;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #f43f5e;
+            box-shadow: 0 0 20px rgba(244, 63, 94, 0.4);
+        }
+
+        .live-badge {
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ef4444;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.5);
+            white-space: nowrap;
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            animation: blink 1.2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.8); }
+        }
+
+        .username {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .verified-icon {
+            width: 20px;
+            height: 20px;
+            fill: #3b82f6;
+        }
+
+        .viewers-count {
+            font-size: 13px;
+            color: #9ca3af;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 16px;
+        }
+
+        .bio-text {
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #e5e7eb;
+            max-width: 330px;
+            margin-bottom: 24px;
+        }
+
+        .links-container {
+            width: 100%;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .link-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .link-card:hover, .link-card:active {
+            transform: translateY(-2px);
+            background: rgba(51, 65, 85, 0.85);
+            border-color: rgba(244, 63, 94, 0.4);
+        }
+
+        .link-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .icon-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(244, 63, 94, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* Special style for final action button */
+        .link-card.primary {
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+            border: 1px solid #f43f5e;
+            box-shadow: 0 8px 25px rgba(225, 29, 72, 0.45);
+            animation: pulse-btn 2s infinite;
+        }
+
+        .link-card.primary:hover, .link-card.primary:active {
+            background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+        }
+
+        @keyframes pulse-btn {
+            0% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.7); }
+            70% { box-shadow: 0 0 0 14px rgba(225, 29, 72, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+        }
+
+        .status-check {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .status-check.completed {
+            background: #10b981;
+            border-color: #10b981;
+        }
+
+        .footer {
+            margin-top: flex-end;
+            padding-top: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .brand-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 12px;
+            font-size: 11px;
+            color: #6b7280;
+        }
+
+        .footer-links a {
+            color: #6b7280;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-bg"></div>
+
+        <div class="profile-section">
+            <div class="avatar-wrapper">
+                <!-- Change image src below with your own girl photo path or URL -->
+                <img class="avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" alt="Profile Photo">
+                <div class="live-badge">
+                    <span class="live-dot"></span>
+                    <span>ONLINE SEKARANG</span>
+                </div>
+            </div>
+
+            <h1 class="username">
+                @Maya_Indah_live
+                <svg class="verified-icon" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="#ffffff"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+            </h1>
+
+            <div class="viewers-count">
+                🔥 <span id="viewer-count">1,482</span> orang sedang menonton
+            </div>
+
+            <p class="bio-text">
+                Halo Sayang! Aku lagi live streaming nih di kamar pribadi. 🔞 Verifikasi usiamu dulu ya untuk masuk secara gratis! 👇
+            </p>
+        </div>
+
+        <div class="links-container">
+            <!-- Step 1 -->
+            <div class="link-card" id="step1" onclick="handleStepClick(1)">
+                <div class="link-left">
+                    <div class="icon-badge">🔞</div>
+                    <div>
+                        <div style="font-size: 11px; color: #f43f5e; font-weight: 700; text-transform: uppercase;">Langkah 1</div>
+                        <div>Saya Berusia 18 Tahun / Lebih</div>
+                    </div>
+                </div>
+                <div class="status-check" id="check1"></div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="link-card" id="step2" onclick="handleStepClick(2)">
+                <div class="link-left">
+                    <div class="icon-badge">🤝</div>
+                    <div>
+                        <div style="font-size: 11px; color: #f43f5e; font-weight: 700; text-transform: uppercase;">Langkah 2</div>
+                        <div>Bersedia Bersopan Santun di Cam</div>
+                    </div>
+                </div>
+                <div class="status-check" id="check2"></div>
+            </div>
+
+            <!-- Main CTA / Step 3 -->
+            <div class="link-card primary" id="step3" onclick="handleFinalClick()">
+                <div class="link-left">
+                    <div class="icon-badge" style="background: rgba(255,255,255,0.2);">🔥</div>
+                    <div>
+                        <div style="font-size: 11px; color: #fef08a; font-weight: 800; text-transform: uppercase;">Langkah Terakhir</div>
+                        <div style="font-size: 15px; font-weight: 800;">MASUK KAMAR PRIBADI GRATIS 👉</div>
+                    </div>
+                </div>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="brand-badge">Privasi Terjamin 100% Aman</div>
+            <div class="footer-links">
+                <a href="#">Privasi</a> • 
+                <a href="#">Syarat & Ketentuan</a> • 
+                <a href="#">Laporkan</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // REPLACE THIS URL WITH YOUR AFFILIATE/DATING OFFER LINK
+        const TARGET_URL = "https://example.com/dating-offer";
+
+        let step1Completed = false;
+        let step2Completed = false;
+
+        function handleStepClick(stepNumber) {
+            if (stepNumber === 1) {
+                step1Completed = true;
+                const check1 = document.getElementById('check1');
+                check1.classList.add('completed');
+                check1.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            } else if (stepNumber === 2) {
+                step2Completed = true;
+                const check2 = document.getElementById('check2');
+                check2.classList.add('completed');
+                check2.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            }
+        }
+
+        function handleFinalClick() {
+            // Direct redirect on final button click
+            window.location.href = TARGET_URL;
+        }
+
+        // Dynamic viewer count simulation to boost social proof
+        setInterval(() => {
+            const countElement = document.getElementById('viewer-count');
+            let currentCount = parseInt(countElement.innerText.replace(',', ''));
+            const change = Math.floor(Math.random() * 7) - 3;
+            currentCount += change;
+            countElement.innerText = currentCount.toLocaleString('en-US');
+        }, 3000);
+    </script>
+</body>
+</html>
